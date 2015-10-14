@@ -64,6 +64,7 @@ module Kitchen
       default_config :chef_bootstrap_url, 'https://www.getchef.com/chef/install.sh'
       default_config :puppet_logdest, nil
       default_config :custom_install_command, nil
+      default_config :options, ''
 
       default_config :puppet_apply_command, nil
 
@@ -530,6 +531,7 @@ module Kitchen
             puppet_manifestdir,
             "--fileserverconfig=#{File.join(config[:root_path], 'fileserver.conf')}",
             puppet_environment_flag,
+            puppet_options,
             puppet_noop_flag,
             puppet_detailed_exitcodes_flag,
             puppet_verbose_flag,
@@ -838,6 +840,10 @@ module Kitchen
 
       def chef_url
         config[:chef_bootstrap_url]
+      end
+
+      def puppet_options
+        config[:options]
       end
 
       def prepare_manifests

@@ -508,6 +508,10 @@ describe Kitchen::Provisioner::PuppetApply do
         config[:hiera_package] = 'hiera'
         expect(provisioner[:hiera_package]).to eq('hiera')
       end
+
+      it 'Should set options to empty' do
+        expect(provisioner[:options]).to eq('')
+      end
     end
   end
 
